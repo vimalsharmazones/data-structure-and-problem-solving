@@ -1,1 +1,1 @@
-# python-data-structure-and-problem-solving
+# data-structure-and-problem-solving
