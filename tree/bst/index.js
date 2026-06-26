@@ -55,6 +55,54 @@ class BST {
     return false;
   }
 
+  // Find minimum node
+  findMin(node) {
+    while (node.left) {
+      node = node.left;
+    }
+    return node;
+  }
+
+  // Delete
+  delete(value) {
+    this.root = this.deleteNode(this.root, value);
+  }
+
+  deleteNode(node, value) {
+    if (!node) return null;
+
+    // Traverse tree
+    if (value < node.value) {
+      node.left = this.deleteNode(node.left, value);
+    } else if (value > node.value) {
+      node.right = this.deleteNode(node.right, value);
+    } else {
+      // Node found
+
+      // Case 1: No child
+      if (node.left === null && node.right === null) {
+        return null;
+      }
+
+      // Case 2: One child
+      if (node.left === null) {
+        return node.right;
+      }
+
+      if (node.right === null) {
+        return node.left;
+      }
+
+      // Case 3: Two children
+
+      let minNode = this.findMin(node.right); // Inorder successor = smallest value in right subtree
+      node.value = minNode.value;
+      node.right = this.deleteNode(node.right, minNode.value);
+    }
+
+    return node;
+  }
+
   // Inorder Traversal (Sorted Order)
   inorder(node = this.root) {
     if (!node) return;
