@@ -1,3 +1,4 @@
+// 160. Intersection of Two Linked Lists
 // Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect.
 // If the two linked lists have no intersection at all, return null.
 
@@ -19,9 +20,8 @@ var getIntersectionNode = function (headA, headB) {
   let cB = headB;
 
   while (cA !== cB) {
-    cA = cA !== null ? cA.next : headB;
-    cB = cB !== null ? cB.next : headA;
+    cA = cA === null ? headB : cA.next;
+    cB = cB === null ? headA : cB.next;
   }
-
-  return cA; // intersection node or null
+  return cA;
 };
