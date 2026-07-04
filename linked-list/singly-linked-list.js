@@ -1,4 +1,4 @@
-class SinglyLinkedListNode {
+class Node {
   constructor(data) {
     this.data = data;
     this.next = null;
@@ -13,7 +13,7 @@ class SinglyLinkedList {
 
   // Insert at end
   append(data) {
-    const newNode = new SinglyLinkedListNode(data);
+    const newNode = new Node(data);
     if (this.head === null) {
       this.head = newNode;
     } else {
@@ -28,9 +28,26 @@ class SinglyLinkedList {
 
   // Insert at beginning
   prepend(data) {
-    const newNode = new SinglyLinkedListNode(data);
+    const newNode = new Node(data);
     newNode.next = this.head;
     this.head = newNode;
+  }
+
+  deleteWithDummyHead(value) {
+    const dummyHead = new Node(null);
+    dummyHead.next = this.head;
+
+    let current = dummyHead;
+
+    while (current.next !== null && current.next.data !== value) {
+      current = current.next;
+    }
+
+    if (current.next !== null) {
+      current.next = current.next.next;
+    }
+
+    this.head = dummyHead.next;
   }
 
   // Delete a node by value
