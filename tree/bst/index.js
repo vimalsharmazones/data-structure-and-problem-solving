@@ -111,6 +111,36 @@ class BST {
     console.log(node.value);
     this.inorder(node.right);
   }
+
+  bfs(node = this.root) {
+    if (!node) {
+      return;
+    }
+    const result = [];
+    const queue = [this.root];
+    let level = -1;
+
+    while (queue.length > 0) {
+      ++level;
+      result[level] = [];
+      const levelSize = queue.length;
+
+      for (let i = 0; i < levelSize; i++) {
+        const currentNode = queue.shift();
+
+        result[level].push(currentNode.value);
+        if (currentNode.left) {
+          queue.push(currentNode.left);
+        }
+        if (currentNode.right) {
+          queue.push(currentNode.right);
+        }
+      }
+    }
+
+    console.log("bfs", result);
+    return result;
+  }
 }
 const tree = new BST();
 
@@ -140,3 +170,4 @@ tree.inorder();
 // 60
 // 70
 // 80
+tree.bfs();
