@@ -1,3 +1,5 @@
+package Easy;
+
 public class LeetCode03LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
 

@@ -1,3 +1,5 @@
+package Easy;
+
 public class LeetCode27RemoveElement {
 
     public int removeElement(int[] nums, int val) {

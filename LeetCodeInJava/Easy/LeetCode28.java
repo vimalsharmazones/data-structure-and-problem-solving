@@ -1,3 +1,5 @@
+package Easy;
+
 public class LeetCode28 {
     public static int strStr(String haystack, String needle) {
 

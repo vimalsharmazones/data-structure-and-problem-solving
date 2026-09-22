@@ -1,3 +1,5 @@
+package Easy;
+
 import utils.ListNode;
 
 /**
