@@ -1,5 +1,6 @@
 package Java.Interview;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -55,6 +56,14 @@ public class FindAllVowelsFromList {
                 .filter(ch -> "aeiou".indexOf(ch) > -1)
                 .collect(Collectors.groupingBy(ch -> ch,
                         Collectors.counting()));
+
+        // Arrays.stream(words)
+        words.stream()
+                .collect(Collectors.joining(""))
+                .chars()
+                .mapToObj((ch) -> (char) ch)
+                .filter((ch) -> "aeiou".indexOf(ch) != -1)
+                .collect(Collectors.groupingBy((ch) -> ch, Collectors.counting()));
 
         System.out.println(outputMap);
 
